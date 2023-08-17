@@ -16,7 +16,7 @@ package CodeFly;
  * 再由mid判断left和right的赋值
  * 边界的规则通过区间的定义来
  */
-public class LeetCode704 {
+public class L001LeetCode704 {
     public static void main(String[] args) {
 
     }
