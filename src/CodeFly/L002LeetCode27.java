@@ -31,7 +31,7 @@ public class L002LeetCode27 {
      * @param val
      * @return
      */
-    public int removeElement1(int[] nums, int val) {
+    public static int removeElement1(int[] nums, int val) {
         int tail=nums.length-1;
         int length=nums.length;
         for(int i=0;i<length;i++){
@@ -50,7 +50,7 @@ public class L002LeetCode27 {
      * @param val
      * @return
      */
-    public int removeElement2(int[] nums, int val) {
+    public static int removeElement2(int[] nums, int val) {
         int slow=0;
         for(int fast=0;fast<nums.length;fast++){
             if(nums[fast]!=val){

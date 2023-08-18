@@ -27,7 +27,7 @@ public class L001LeetCode704 {
      * @param target
      * @return
      */
-    public int search1(int[] nums, int target) {
+    public static int search1(int[] nums, int target) {
         int l=0;
         int r=nums.length;//²»Í¬µã
         int mid=r/2;
@@ -50,7 +50,7 @@ public class L001LeetCode704 {
      * @param target
      * @return
      */
-    public int search2(int[] nums, int target) {
+    public static int search2(int[] nums, int target) {
         int left=0;
         int right=nums.length-1;
         int mid=left+(right-left)/2;
