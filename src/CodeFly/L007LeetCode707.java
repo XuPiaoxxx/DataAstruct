@@ -43,13 +43,9 @@ public class L007LeetCode707 {
     }
 
     public int get(int index) {
-        if(index<0||index>length-1){
-            return -1;
-        }
+        if(index<0||index>length-1) return -1;
         ListNode cur=head;
-        for(int i=0;i<=index;i++){
-            cur=cur.next;
-        }
+        for(int i=0;i<=index;i++) cur=cur.next;
         return cur.val;
     }
 
@@ -60,9 +56,7 @@ public class L007LeetCode707 {
         head.next=Node;
         ListNode cur=head;
         this.length++;
-        for(int i=0;i<length;i++){
-            cur=cur.next;
-        }
+        for(int i=0;i<length;i++)cur=cur.next;
         head.prev=cur;
     }
 
@@ -77,13 +71,9 @@ public class L007LeetCode707 {
     }
 
     public void addAtIndex(int index, int val) {
-        if(index<0||index>length){
-            return;
-        }
+        if(index<0||index>length)return;
         ListNode cur=head;
-        for(int i=0;i<index;i++){
-            cur=cur.next;
-        }
+        for(int i=0;i<index;i++)cur=cur.next;
         ListNode Node=new ListNode(val);
         Node.prev=cur;
         Node.next=cur.next;
@@ -93,13 +83,9 @@ public class L007LeetCode707 {
     }
 
     public void deleteAtIndex(int index) {
-        if(index<0||index>length-1){
-            return;
-        }
+        if(index<0||index>length-1)return;
         ListNode cur=head;
-        for(int i=0;i<index;i++){
-            cur=cur.next;
-        }
+        for(int i=0;i<index;i++)cur=cur.next;
         cur.next.next.prev=cur;
         cur.next=cur.next.next;
         length--;
