@@ -13,6 +13,7 @@ package CodeFly;
  *
  * tips:
  * 链表基本功，没什么好说的，太犹豫了~
+ * 8/25更新，我tm莫名其妙写了个循环链表笑死我了
  */
 class ListNode{
     int val;
