@@ -12,7 +12,7 @@ package CodeFly;
  解释：链表中有一个环，其尾部连接到第二个节点。
  *
  * tips:
- * 多学习解题方法
+ * 多学习解题方法,环形链表公式很重要
  */
 
 public class L0011LeetCode142 {
