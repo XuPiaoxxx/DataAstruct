@@ -1,0 +1,71 @@
+package CodeFly;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * 反转字符串中的单词-LeetCode:151-代码随想录
+ * 2023.08.27/11.59
+
+ 题目:给你一个字符串 s ，请你反转字符串中 单词 的顺序。
+ 单词 是由非空格字符组成的字符串。s 中使用至少一个空格将字符串中的 单词 分隔开。
+ 返回 单词 顺序颠倒且 单词 之间用单个空格连接的结果字符串。
+ 注意：输入字符串 s中可能会存在前导空格、尾随空格或者单词间的多个空格。返回的结果字符串中，单词间应当仅用单个空格分隔，且不包含任何额外的空格。
+
+*样例:
+ * 示例 1：示例 1：
+ *
+ * 输入：s = "the sky is blue"
+ * 输出："blue is sky the"
+ * 示例 2：
+ *
+ * 输入：s = "  hello world  "
+ * 输出："world hello"
+ * 解释：反转后的字符串中不能存在前导空格和尾随空格。
+ *
+ * 输入：
+ * tips:
+ * 学习别人巧妙的解题方法
+ * 双指针(快慢指针，覆盖)删除对应元素，时间复杂度O(n)
+*/
+
+public class L0020LeetCode151 {
+    public static void main(String[] args) {
+
+    }
+
+    /**
+     * 库函数法
+     * @param s
+     * @return
+     */
+    public String reverseWords1(String s) {
+        s=s.trim();
+        List<String> wordList= Arrays.asList(s.split("\\s+"));
+        Collections.reverse(wordList);
+        return String.join(" ",wordList);
+    }
+
+    /**
+     * 从后向前遍历，左边left指针去除开头空格。
+     * right去除右边空格并且定义单词的右边界。
+     * index从后前期遍历，赋值跳过空格和确定单词的左边界。
+     * 新建数组并加入。
+     * @param s
+     * @return
+     */
+    public String reverseWords2(String s) {
+        s=s.trim();
+        StringBuilder sb=new StringBuilder();
+        int j=s.length()-1;
+        int i=j;
+        while(i>=0){
+            while(i>=0&&s.charAt(i)!=' ') i--;
+            sb.append(s.substring(i+1,j+1)+" ");
+            while(i>=0&&s.charAt(i)==' ') i--;
+            j=i;
+        }
+        return sb.toString().trim();
+    }
+}
