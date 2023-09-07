@@ -1,9 +1,6 @@
 package CodeFly;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * 前中后序遍历-LeetCode:144,145,94-代码随想录
@@ -51,6 +48,44 @@ public class L0029LeetCode94A144A145 {
         postorder(node.right,list);
         list.add(node.val);
     }
+    //非递归遍历
+    //先序
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> res=new ArrayList();
+        Stack<TreeNode> stack=new Stack();
+        stack.push(root);
+        while(!stack.isEmpty()){
+            TreeNode temp=stack.pop();
+            if(temp!=null){
+                res.add(temp.val);
+            }else{
+                continue;
+            }
+            stack.push(temp.right);
+            stack.push(temp.left);
+        }
+        return res;
+    }
+    //后序
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> res=new ArrayList();
+        Stack<TreeNode> stack=new Stack();
+        stack.push(root);
+        while(!stack.isEmpty()){
+            TreeNode temp=stack.pop();
+            if(temp!=null){
+                res.add(temp.val);
+            }else{
+                continue;
+            }
+            stack.push(temp.left);
+            stack.push(temp.right);
+        }
+        Collections.reverse(res);
+        return res;
+    }
+    //中序
+
 
 
 }
