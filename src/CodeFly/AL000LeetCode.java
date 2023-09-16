@@ -9,7 +9,7 @@ package CodeFly;
  TIPS:
 */
 
-public class ATmepleteLeetCode {
+public class AL000LeetCode {
     public static void main(String[] args) {
     }
 }
