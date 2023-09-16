@@ -12,14 +12,12 @@ package CodeFly;
  二叉搜索树的性质。
 */
 
-public class AL045LeetCode700 {
+public class L0044LeetCode700 {
     public static void main(String[] args) {
     }
     //简单的二叉搜索树应用
     public TreeNode searchBST(TreeNode root, int val) {
-        if(root==null) return null;
-        if(root.val==val) return root;
-        else if(val<root.val) return searchBST(root.left,val);
-        else return searchBST(root.right,val);
+        if (root == null || root.val == val) return root;
+        return root.val < val ? searchBST(root.right, val) : searchBST(root.left, val);
     }
 }
