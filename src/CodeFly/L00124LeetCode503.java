@@ -25,7 +25,7 @@ import java.util.*;
 //本题不同之处为将数组看成一个首尾相接的环形，可以直接复制一份数组拼接在后面，也可以直接遍历2n-1次，取下标的时候用取模来实现。
 public class L00124LeetCode503 {
     public static void main(String[] args) {
-
+        int[] arr={2,3,4,6};
     }
     //官方优秀写法
     //提前用n来存储数组长度，多次使用
@@ -54,6 +54,18 @@ public class L00124LeetCode503 {
                 res[stack.pop()]=nums[i%nums.length];
             }
             stack.push(i%nums.length);
+        }
+        return res;
+    }
+    public static int tupleSameProduct(int[] nums) {
+        Map<Integer,Integer> map=new HashMap();
+        int res=0;
+        for(int i=0;i<nums.length;i++){
+            for(int j=i+1;j<nums.length;j++){
+                int sum=nums[i]*nums[j];
+                if(map.containsKey(sum))res+=map.get(sum);
+                map.put(sum,map.getOrDefault(sum,0)+1);
+            }
         }
         return res;
     }
