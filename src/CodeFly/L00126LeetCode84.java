@@ -14,7 +14,8 @@ import java.util.LinkedList;
     //这题是找两边的最小值，tips:在数组前后都加个0，防止出现忽略的包括首尾的结果统计
 public class L00126LeetCode84 {
     public static void main(String[] args) {
-        int[] arr={2,3,4,6};
+        int[] arr={1};
+        largestRectangleArea(arr);
     }
     //1.单调栈
     //每次循环都对当前高度和栈口元素的值进行比较
@@ -24,30 +25,29 @@ public class L00126LeetCode84 {
     //求左右墙壁之间有多宽，要left-right再-1，排除第一个充当墙壁的区域(不能直接减暂存的下标，有可能会出现left在mid的很左边)
 
     //本题运用技巧在前后都加个0!
-    public int trap(int[] height) {
+    public static int largestRectangleArea(int[] heights) {
         Deque<Integer> stack=new LinkedList();
         int res=0;
+        int[] arr=new int[heights.length+2];
+        for(int i=0;i<heights.length;i++){
+            arr[i+1]=heights[i];
+        }
         stack.push(0);
-        for(int i=1;i<height.length;i++){
-            if(height[i]>height[stack.peek()]){
-                while(!stack.isEmpty()&&height[i]>height[stack.peek()]){
-                    int mid=stack.pop();
-                    if(!stack.isEmpty()){
-                        res+=(i-stack.peek()-1)*(Math.min(height[i],height[stack.peek()])-height[mid]);
-                    }
-                }
-                stack.push(i);
-            }else if(height[i]==height[stack.peek()]){
+        for(int i=1;i<arr.length;i++){
+            if(arr[i]==arr[stack.peek()]){
                 stack.pop();
                 stack.push(i);
+            }else if(arr[i]>arr[stack.peek()]){
+                stack.push(i);
             }else{
+                while(!stack.isEmpty()&&arr[i]<arr[stack.peek()]){
+                    int h=arr[stack.pop()];
+                    int w=i-stack.peek()-1;
+                    res=Math.max(res,w*h);
+                }
                 stack.push(i);
             }
         }
         return res;
     }
-    //TODO 2.双指针及其优化
-
-    
-    //TODO 3.动态规划
 }
